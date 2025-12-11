@@ -1,0 +1,1285 @@
+# StoryForge Agent-Based Team Structure
+## Solo Founder Development | Planning Phase Implementation Guide
+### Version 1.0 | December 2024 | CONFIDENTIAL
+
+---
+
+# 1. Executive Summary
+
+## 1.1 Overview
+
+This document defines a comprehensive agent-based team structure enabling a solo founder to develop StoryForge—a generative film-creation platform—with minimal human intervention during the planning phase. The structure leverages Claude Code agents for technical implementation and BMAD (Business, Marketing, Architecture, Design) agents for strategic functions.
+
+## 1.2 Agent Summary
+
+**Total Agents: 16**
+- **Claude Code Agents:** 8 (Technical implementation)
+- **BMAD Agents:** 5 (Business & strategy)
+- **Recommended New Agents:** 3 (Gap coverage)
+
+## 1.3 Key Principles for Autonomous Operation
+
+1. **Agent Specialization:** Each agent owns a specific domain with clear boundaries
+2. **Explicit Handoffs:** Defined triggers, artifacts, and quality gates between agents
+3. **Fail-Safe Escalation:** Clear escalation paths when agents encounter blockers
+4. **Audit Trail:** All decisions and artifacts documented for founder review
+5. **Iterative Refinement:** Agents can request re-work from upstream agents
+
+## 1.4 Human Founder Intervention Philosophy
+
+The solo founder acts as the strategic decision-maker and final approver, intervening only at defined checkpoints. Agents operate autonomously within their domains, escalating only when:
+1. Decisions exceed their authority
+2. Conflicts arise between agents
+3. Resource constraints require prioritization
+4. Quality gates fail repeatedly
+
+---
+
+# 2. Complete Agent Roster
+
+## 2.1 Claude Code Agents (Technical)
+
+### 2.1.1 Code Review Agent
+
+| Attribute | Details |
+|-----------|---------|
+| **Type** | Claude Code Agent |
+| **Autonomy Level** | Fully Autonomous |
+
+**Primary Responsibilities:**
+- Review all code changes for quality, security, and best practices
+- Enforce coding standards and architectural patterns
+- Identify potential bugs, performance issues, and technical debt
+- Suggest refactoring opportunities and improvements
+
+**Core Capabilities:**
+TypeScript/JavaScript, React/Next.js patterns, API design, security analysis, performance optimization, accessibility review
+
+**Tools & Access:**
+Git repository, ESLint/Prettier configs, CI/CD pipeline output, PR templates
+
+**Existing Prompt Reference:**
+Standard Claude Code code-review agent with StoryForge-specific coding standards
+
+---
+
+### 2.1.2 Debug Specialist Agent
+
+| Attribute | Details |
+|-----------|---------|
+| **Type** | Claude Code Agent |
+| **Autonomy Level** | Fully Autonomous |
+
+**Primary Responsibilities:**
+- Diagnose and resolve runtime errors and exceptions
+- Analyze stack traces, logs, and error reports
+- Identify root causes of intermittent failures
+- Propose and implement fixes with regression prevention
+
+**Core Capabilities:**
+Error analysis, log parsing, debugging tools, memory profiling, network debugging, state management debugging
+
+**Tools & Access:**
+Error monitoring (Sentry), application logs, browser dev tools, network inspectors
+
+---
+
+### 2.1.3 Test Automation Agent
+
+| Attribute | Details |
+|-----------|---------|
+| **Type** | Claude Code Agent |
+| **Autonomy Level** | Fully Autonomous |
+
+**Primary Responsibilities:**
+- Write and maintain unit, integration, and E2E tests
+- Achieve and maintain target code coverage (>80%)
+- Create test fixtures, mocks, and test data
+- Implement performance and load testing scenarios
+
+**Core Capabilities:**
+Jest, React Testing Library, Playwright/Cypress, MSW for API mocking, test strategy design
+
+**Tools & Access:**
+Test framework configs, CI/CD test runners, coverage reports, test databases
+
+---
+
+### 2.1.4 Documentation Agent
+
+| Attribute | Details |
+|-----------|---------|
+| **Type** | Claude Code Agent |
+| **Autonomy Level** | Fully Autonomous |
+
+**Primary Responsibilities:**
+- Generate and maintain API documentation
+- Create component documentation and usage examples
+- Write architecture decision records (ADRs)
+- Maintain README files and onboarding guides
+
+**Core Capabilities:**
+Technical writing, JSDoc/TSDoc, OpenAPI/Swagger, Markdown, Storybook documentation
+
+**Tools & Access:**
+docs/ directory, Storybook, API schema files, CLAUDE.md
+
+---
+
+### 2.1.5 DevOps Agent
+
+| Attribute | Details |
+|-----------|---------|
+| **Type** | Claude Code Agent |
+| **Autonomy Level** | Semi-Autonomous (infrastructure changes require approval) |
+
+**Primary Responsibilities:**
+- Configure and maintain CI/CD pipelines
+- Manage deployment configurations (Vercel, AWS)
+- Set up monitoring, alerting, and observability
+- Optimize build times and deployment processes
+
+**Core Capabilities:**
+GitHub Actions, Vercel configuration, Docker, Terraform basics, monitoring setup
+
+**Tools & Access:**
+.github/workflows, vercel.json, infrastructure configs, secrets management
+
+---
+
+### 2.1.6 Security Agent
+
+| Attribute | Details |
+|-----------|---------|
+| **Type** | Claude Code Agent |
+| **Autonomy Level** | Semi-Autonomous (critical findings require approval) |
+
+**Primary Responsibilities:**
+- Scan for security vulnerabilities in code and dependencies
+- Review authentication and authorization implementations
+- Ensure secure data handling and storage practices
+- Audit API endpoints for common vulnerabilities
+
+**Core Capabilities:**
+OWASP Top 10, dependency scanning, auth patterns, encryption, secure coding
+
+**Tools & Access:**
+npm audit, Snyk integration, security configs, auth middleware
+
+---
+
+### 2.1.7 Performance Agent
+
+| Attribute | Details |
+|-----------|---------|
+| **Type** | Claude Code Agent |
+| **Autonomy Level** | Fully Autonomous |
+
+**Primary Responsibilities:**
+- Analyze and optimize bundle sizes and load times
+- Implement caching strategies and lazy loading
+- Monitor and improve Core Web Vitals
+- Optimize database queries and API response times
+
+**Core Capabilities:**
+Lighthouse, bundle analysis, React profiling, database optimization, CDN configuration
+
+**Tools & Access:**
+Performance monitoring tools, bundle analyzer, Lighthouse CI, database query logs
+
+---
+
+### 2.1.8 API Integration Agent
+
+| Attribute | Details |
+|-----------|---------|
+| **Type** | Claude Code Agent |
+| **Autonomy Level** | Semi-Autonomous (new vendor integrations require approval) |
+
+**Primary Responsibilities:**
+- Implement and maintain AI model API integrations (Runway, Sora, Kling)
+- Build provider routing and fallback mechanisms
+- Handle API rate limiting, retries, and error handling
+- Integrate third-party services (Stripe, Auth0, analytics)
+
+**Core Capabilities:**
+REST/GraphQL APIs, OAuth flows, webhook handling, SDK integration, circuit breaker patterns
+
+**Tools & Access:**
+API documentation, SDK libraries, secrets vault, webhook endpoints
+
+---
+
+## 2.2 BMAD Agents (Business & Strategy)
+
+### 2.2.1 Business Analyst Agent
+
+| Attribute | Details |
+|-----------|---------|
+| **Type** | BMAD Agent |
+| **Autonomy Level** | Semi-Autonomous (strategic decisions require approval) |
+
+**Primary Responsibilities:**
+- Translate business requirements into user stories and acceptance criteria
+- Analyze market trends and competitive landscape
+- Define success metrics and KPIs for features
+- Create and maintain product backlog with prioritization
+
+**Core Capabilities:**
+Requirements gathering, user story writing, market analysis, stakeholder communication, agile methodologies
+
+**Tools & Access:**
+PRD documents, user research data, analytics dashboards, backlog management
+
+---
+
+### 2.2.2 Marketing Agent
+
+| Attribute | Details |
+|-----------|---------|
+| **Type** | BMAD Agent |
+| **Autonomy Level** | Semi-Autonomous (campaign launches require approval) |
+
+**Primary Responsibilities:**
+- Develop positioning, messaging, and brand voice
+- Create content strategy and marketing collateral
+- Plan GTM strategy for launches (Product Hunt, press)
+- Define creator/influencer partnership strategies
+
+**Core Capabilities:**
+Content marketing, SEO, social media strategy, PR, creator economy dynamics
+
+**Tools & Access:**
+GTM plan docs, brand guidelines, marketing asset templates, analytics
+
+---
+
+### 2.2.3 Architecture Agent
+
+| Attribute | Details |
+|-----------|---------|
+| **Type** | BMAD Agent |
+| **Autonomy Level** | Semi-Autonomous (major architectural changes require approval) |
+
+**Primary Responsibilities:**
+- Design system architecture and service boundaries
+- Create technical specifications and architecture diagrams
+- Define API contracts and data models
+- Evaluate and recommend technology choices
+
+**Core Capabilities:**
+System design, microservices, database design, API design, scalability patterns, tech evaluation
+
+**Tools & Access:**
+Technical architecture docs, system diagrams, ADR repository, tech radar
+
+---
+
+### 2.2.4 Design Agent (UX/UI)
+
+| Attribute | Details |
+|-----------|---------|
+| **Type** | BMAD Agent |
+| **Autonomy Level** | Semi-Autonomous (major UX changes require approval) |
+
+**Primary Responsibilities:**
+- Create and maintain design system and component library
+- Design user flows and wireframes for features
+- Define responsive layouts and mobile-first patterns
+- Ensure accessibility compliance (WCAG 2.1 AA)
+
+**Core Capabilities:**
+UI/UX design, design systems, Tailwind CSS, responsive design, accessibility, user research
+
+**Tools & Access:**
+Design system docs, Figma/design files, component library, user feedback
+
+---
+
+### 2.2.5 Product Owner Agent
+
+| Attribute | Details |
+|-----------|---------|
+| **Type** | BMAD Agent |
+| **Autonomy Level** | Semi-Autonomous (roadmap changes require approval) |
+
+**Primary Responsibilities:**
+- Own product roadmap and feature prioritization
+- Define release criteria and coordinate launches
+- Balance technical debt with feature development
+- Coordinate cross-functional agent activities
+
+**Core Capabilities:**
+Product management, roadmap planning, release management, stakeholder alignment, agile ceremonies
+
+**Tools & Access:**
+Product roadmap, sprint boards, release calendars, stakeholder communication channels
+
+---
+
+## 2.3 Recommended New Agents
+
+### 2.3.1 Data Engineering Agent (NEW)
+
+| Attribute | Details |
+|-----------|---------|
+| **Type** | Hybrid Technical Agent |
+| **Priority** | Critical |
+| **Autonomy Level** | Semi-Autonomous |
+
+**Primary Responsibilities:**
+- Design and implement local-first database schema (Dexie.js)
+- Build sync protocols between IndexedDB and server
+- Implement vector storage for character embeddings
+- Design caching strategies (L1/L2) for generation pipeline
+
+**Core Capabilities:**
+IndexedDB/Dexie.js, PostgreSQL, vector databases (Pinecone/pgvector), data modeling, sync protocols, caching
+
+**Tools & Access:**
+Database configs, migration scripts, sync services, analytics event bus
+
+**Suggested System Prompt:**
+```
+You are the Data Engineering Agent for StoryForge. Your role is to design and implement the local-first data architecture using Dexie.js for IndexedDB, sync protocols for offline-first functionality, and vector storage for AI model continuity (character embeddings). 
+
+Key responsibilities:
+1. Design schemas that support offline-first with seamless sync
+2. Implement efficient caching strategies (L1 Redis, L2 vector DB)
+3. Ensure data integrity across sync boundaries
+4. Optimize for mobile PWA performance constraints
+
+Escalate to founder when: (1) schema changes affect >3 services, (2) sync conflicts require policy decisions, or (3) storage costs exceed budget thresholds.
+
+Reference documents: StoryForge_Technical_Architecture.md, specifically sections on Data Layer and Caching Strategy.
+```
+
+**Setup Guidance:**
+1. Create agent prompt with Dexie.js expertise and local-first architecture patterns
+2. Include StoryForge data model requirements from Technical Architecture doc
+3. Grant access to database schema files and migration tooling
+4. Configure integration with Architecture Agent for schema reviews
+
+---
+
+### 2.3.2 QA Orchestrator Agent (NEW)
+
+| Attribute | Details |
+|-----------|---------|
+| **Type** | Coordination Agent |
+| **Priority** | High |
+| **Autonomy Level** | Fully Autonomous |
+
+**Primary Responsibilities:**
+- Coordinate quality gates across all development phases
+- Aggregate test results and quality metrics
+- Define and enforce release readiness criteria
+- Manage regression testing and bug triage
+
+**Core Capabilities:**
+Test strategy, quality metrics, release management, cross-agent coordination, risk assessment
+
+**Tools & Access:**
+Test dashboards, CI/CD results, bug tracking, release checklists
+
+**Suggested System Prompt:**
+```
+You are the QA Orchestrator for StoryForge. Your role is to ensure quality across all development phases by coordinating with Test Automation, Code Review, Security, and Performance agents.
+
+Key responsibilities:
+1. Define and enforce quality gates for each development phase
+2. Aggregate metrics: code coverage (target >80%), performance (p95 <90s), security (0 critical/high)
+3. Determine release readiness based on defined criteria
+4. Coordinate regression testing before releases
+5. Triage bugs and assign to appropriate agents
+
+Quality gate criteria by phase:
+- Alpha: >85% character consistency, unit tests passing, no critical bugs
+- Beta: >90% consistency, p95 gen <90s, export success >80%, cache hit >30%
+- Launch: $50K MRR, 5K users, uptime 99.5%, all metrics green
+
+Escalate to founder when: (1) critical bugs block release, (2) quality metrics fall below thresholds for >48h, or (3) agents disagree on release decisions.
+```
+
+**Setup Guidance:**
+1. Configure access to all test and quality dashboards
+2. Define integration points with Test Automation and Code Review agents
+3. Create release checklist templates
+4. Set up automated quality metric reporting
+
+---
+
+### 2.3.3 Sprint Coordinator Agent (NEW)
+
+| Attribute | Details |
+|-----------|---------|
+| **Type** | Coordination Agent |
+| **Priority** | High |
+| **Autonomy Level** | Semi-Autonomous |
+
+**Primary Responsibilities:**
+- Manage sprint planning and task assignment to agents
+- Track progress and identify blockers
+- Facilitate handoffs between agents
+- Generate sprint reports for founder review
+
+**Core Capabilities:**
+Agile/Scrum methodology, project tracking, dependency management, reporting, conflict resolution
+
+**Tools & Access:**
+Sprint boards, task tracking, agent communication channels, reporting templates
+
+**Suggested System Prompt:**
+```
+You are the Sprint Coordinator for StoryForge. You manage the flow of work across all agents, ensuring tasks are assigned appropriately, dependencies are tracked, and blockers are resolved efficiently.
+
+Key responsibilities:
+1. Assign incoming tasks to appropriate agents based on the Task Categorization Schema
+2. Track task progress and update status daily
+3. Identify and resolve blockers autonomously when possible
+4. Facilitate handoffs between agents using defined protocols
+5. Generate daily async summaries for founder review
+6. Escalate when critical path is threatened
+
+Task routing logic:
+- FEAT → Architecture → Design → Dev Agents
+- BUG → Debug Specialist → Code Review
+- PERF → Performance Agent
+- SEC → Security Agent
+- DOCS → Documentation Agent
+- TEST → Test Automation Agent
+- INFRA → DevOps Agent
+- INTEG → API Integration Agent
+- DATA → Data Engineering Agent
+- UX → Design Agent
+
+Escalate to founder when: (1) critical path blocked >24h, (2) scope creep detected >25%, (3) resource conflicts cannot be resolved between agents, or (4) timeline slips >3 days on milestones.
+```
+
+**Setup Guidance:**
+1. Configure with full visibility into all agent workstreams
+2. Set up daily reporting automation
+3. Define escalation thresholds and notification channels
+4. Create sprint template with StoryForge-specific ceremonies
+
+---
+
+# 3. RACI Matrix
+
+**Legend:** R = Responsible, A = Accountable, C = Consulted, I = Informed, H = Human Founder
+
+## 3.1 Planning Phase Activities
+
+| Activity | BA | Arch | Design | PO | Mktg | Founder |
+|----------|:--:|:----:|:------:|:--:|:----:|:-------:|
+| Requirements Gathering | R/A | C | C | C | I | H |
+| User Story Creation | R | C | C | A | I | I |
+| Technical Architecture | C | R/A | C | I | I | H |
+| Design System Creation | C | C | R/A | C | C | H |
+| Database Schema Design | C | R/A | I | I | I | I |
+| API Contract Definition | C | R/A | I | C | I | I |
+| GTM Strategy | C | I | C | C | R/A | H |
+| Roadmap Prioritization | C | C | C | R/A | C | H |
+| Success Metrics Definition | R | C | C | A | C | H |
+
+## 3.2 Development Phase Activities
+
+| Activity | CodeRev | Debug | Test | Docs | DevOps | Sec | Perf | API | Founder |
+|----------|:-------:|:-----:|:----:|:----:|:------:|:---:|:----:|:---:|:-------:|
+| Component Development | C | C | C | C | I | C | C | C | I |
+| Code Review | R/A | C | I | I | I | C | C | I | I |
+| Unit/E2E Testing | C | C | R/A | I | C | I | C | I | I |
+| Bug Resolution | C | R/A | C | I | I | C | C | C | I |
+| Documentation | C | I | I | R/A | C | I | I | C | I |
+| Security Audit | C | C | C | I | C | R/A | I | C | H |
+| CI/CD Pipeline | C | I | C | I | R/A | C | C | I | I |
+| Performance Optimization | C | C | C | I | C | I | R/A | C | I |
+| API Integration | C | C | C | C | C | C | C | R/A | H |
+| Database Migration | C | C | C | C | C | I | C | C | H |
+
+## 3.3 Testing & Deployment Activities
+
+| Activity | QA Orch | Test | DevOps | Sec | Perf | Sprint Coord | Founder |
+|----------|:-------:|:----:|:------:|:---:|:----:|:------------:|:-------:|
+| Test Strategy | R/A | R | C | C | C | I | I |
+| Quality Gate Enforcement | R/A | C | C | C | C | I | I |
+| Release Readiness | R/A | C | R | C | C | C | H |
+| Deployment Execution | I | I | R/A | C | C | I | I |
+| Rollback Decision | C | C | R/A | C | C | C | H |
+| Post-Deploy Monitoring | I | I | R/A | C | R | C | I |
+
+## 3.4 Epic-Level Activities (StoryForge Specific)
+
+| Epic | BA | Arch | Design | DataEng | API | Test | Founder |
+|------|:--:|:----:|:------:|:-------:|:---:|:----:|:-------:|
+| Scene Builder & Timeline | R | R/A | R | C | C | C | H |
+| Continuity & Character Lock | C | R/A | C | R | C | C | H |
+| Cinematic Brains & Formats | R | C | R | C | C | C | H |
+| Export Engine | C | R/A | C | C | C | C | I |
+| Provider Routing & Fallbacks | C | R/A | I | C | R | C | H |
+| Safety & Compliance | C | C | I | C | C | C | H |
+| Billing & Marketplace | R | C | R | R | R | C | H |
+| Analytics & Observability | C | R | I | R/A | C | C | I |
+
+---
+
+# 4. Task Assignment Framework
+
+## 4.1 Task Categorization Schema
+
+| Category | Code | Description | Primary Agent(s) |
+|----------|------|-------------|------------------|
+| Feature | FEAT | New feature development | Architecture → Design → Dev Agents |
+| Bug | BUG | Bug fixes and issue resolution | Debug Specialist → Code Review |
+| Performance | PERF | Performance optimization | Performance Agent |
+| Security | SEC | Security-related tasks | Security Agent |
+| Documentation | DOCS | Documentation updates | Documentation Agent |
+| Testing | TEST | Test creation and maintenance | Test Automation Agent |
+| Infrastructure | INFRA | Infrastructure and DevOps | DevOps Agent |
+| Integration | INTEG | Third-party integrations | API Integration Agent |
+| Data | DATA | Database and data layer | Data Engineering Agent |
+| User Experience | UX | UI/UX design tasks | Design Agent |
+| Coordination | COORD | Cross-agent coordination | Sprint Coordinator Agent |
+
+## 4.2 Routing Decision Tree
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    NEW TASK ARRIVES                              │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│ 1. CATEGORIZE: Identify task category from schema               │
+│    └─→ Tag with: FEAT, BUG, PERF, SEC, DOCS, TEST, etc.        │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│ 2. CHECK DEPENDENCIES:                                          │
+│    └─→ Upstream tasks incomplete? Queue with dependency link    │
+│    └─→ No dependencies? Continue to step 3                      │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│ 3. ASSESS COMPLEXITY:                                           │
+│    └─→ S (1-2h) | M (2-8h) | L (8-24h) | XL (multi-day)        │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│ 4. ROUTE TO PRIMARY AGENT:                                      │
+│    └─→ Assign based on category→agent mapping                   │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│ 5. NOTIFY CONSULTED AGENTS:                                     │
+│    └─→ Per RACI matrix, alert C-tagged agents                   │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│ 6. SET PRIORITY:                                                │
+│    └─→ Critical: Production down, security breach               │
+│    └─→ High: Blocks milestone, affects users                    │
+│    └─→ Medium: Standard development work                        │
+│    └─→ Low: Nice-to-have, tech debt                            │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+## 4.3 Priority Handling Matrix
+
+| Priority | Response Time | Agent Behavior | Escalation Trigger |
+|----------|---------------|----------------|-------------------|
+| **Critical** | Immediate (<1h) | Pause current work, address immediately | Founder notified instantly |
+| **High** | Same day (<8h) | Queue next, complete within cycle | If blocked >4h |
+| **Medium** | Within 48h | Standard queue processing | If blocked >24h |
+| **Low** | Within sprint | Backlog, address when capacity allows | Weekly review only |
+
+## 4.4 Dependency Management Protocol
+
+1. **Identification:** Each agent must declare dependencies when accepting a task
+2. **Tracking:** Sprint Coordinator maintains dependency graph in real-time
+3. **Notification:** Upstream agents notified when their work unblocks downstream tasks
+4. **Resolution:** If dependency stalled >24h, Sprint Coordinator reassigns or escalates
+5. **Documentation:** All dependencies logged with timestamps and status changes
+
+## 4.5 Blocked Task Escalation
+
+Before escalating to founder, agents must attempt autonomous resolution:
+
+| Step | Action | Timeframe |
+|------|--------|-----------|
+| 1 | Request clarification from upstream agent (if dependency-related) | 2h |
+| 2 | Consult Architecture Agent for technical blockers | 4h |
+| 3 | Propose alternative approach to Sprint Coordinator | 8h |
+| 4 | **Escalate to founder** with: blocker description, attempted solutions, recommended action | After 24h |
+
+---
+
+# 5. Workflow & Handoff Protocols
+
+## 5.1 Requirements → Architecture Handoff
+
+### Trigger Conditions
+- User stories complete with acceptance criteria
+- Product Owner approves story priority and scope
+- Business Analyst confirms no open questions
+
+### Required Artifacts
+| Artifact | Owner | Format |
+|----------|-------|--------|
+| User Stories | Business Analyst | Given/When/Then format |
+| Functional Requirements | Business Analyst | Requirements doc |
+| Non-Functional Requirements | Business Analyst | NFR checklist |
+| Success Metrics | Product Owner | Metrics definition doc |
+
+### Quality Gates
+- [ ] All stories have clear acceptance criteria
+- [ ] Stories are sized (S/M/L/XL) and prioritized
+- [ ] Dependencies between stories identified
+- [ ] Edge cases documented
+- [ ] Product Owner sign-off obtained
+
+### Receiving Agent Actions (Architecture)
+1. Review requirements for technical feasibility (2h)
+2. Identify system components affected
+3. Flag any technical concerns or constraints
+4. Draft technical approach document within 24h
+
+### Rollback Conditions
+- Requirements ambiguous or contradictory
+- Missing edge cases that affect architecture
+- Conflicting constraints (performance vs. cost, etc.)
+
+---
+
+## 5.2 Architecture → Development Handoff
+
+### Trigger Conditions
+- Technical specification approved by Architecture Agent
+- API contracts defined and reviewed
+- Data models documented and validated by Data Engineering Agent
+- Design Agent has reviewed UX implications
+
+### Required Artifacts
+| Artifact | Owner | Format |
+|----------|-------|--------|
+| Technical Specification | Architecture Agent | Tech spec doc |
+| API Contract | Architecture Agent | OpenAPI/GraphQL schema |
+| Database Schema Changes | Data Engineering Agent | Migration files |
+| Component Architecture | Architecture Agent | Diagram + description |
+| UI/UX Specifications | Design Agent | Wireframes/mockups |
+
+### Quality Gates
+- [ ] Technical spec covers all user stories in scope
+- [ ] API contracts are complete and versioned
+- [ ] Database migrations are reversible
+- [ ] Security Agent has reviewed for vulnerabilities
+- [ ] Performance requirements documented
+- [ ] Design Agent confirms implementation feasibility
+
+### Receiving Agent Actions
+1. Code Review Agent: Prepare PR template and checklist
+2. Test Automation Agent: Create test plan and fixtures
+3. Documentation Agent: Prepare documentation structure
+4. Dev Agents: Begin implementation per spec
+
+### Rollback Conditions
+- Spec incomplete or contradicts requirements
+- Security concerns not addressed
+- Performance constraints not achievable
+
+---
+
+## 5.3 Development → Testing Handoff
+
+### Trigger Conditions
+- Code complete for feature branch
+- Code Review Agent has approved PR
+- Unit tests passing with >80% coverage
+- No critical linting errors
+
+### Required Artifacts
+| Artifact | Owner | Format |
+|----------|-------|--------|
+| Pull Request | Dev Agent | GitHub PR with description |
+| Unit Tests | Dev Agent | Test files |
+| Updated Documentation | Documentation Agent | Docs updates |
+| Code Review Approval | Code Review Agent | PR approval |
+
+### Quality Gates
+- [ ] Linting passes (ESLint, Prettier)
+- [ ] Type checking passes (TypeScript)
+- [ ] Unit test coverage >= 80%
+- [ ] No critical/high security findings
+- [ ] Code Review Agent approved
+
+### Receiving Agent Actions (Test Automation)
+1. Execute integration test suite
+2. Run E2E tests for affected user flows
+3. Perform regression testing on related features
+4. Document test results and any failures
+5. If failures: Route back to Debug Specialist
+
+### Rollback Conditions
+- Test coverage below threshold
+- Critical test failures
+- Security scan reveals new vulnerabilities
+
+---
+
+## 5.4 Testing → Deployment Handoff
+
+### Trigger Conditions
+- All tests passing (unit, integration, E2E)
+- QA Orchestrator approves release readiness
+- Performance benchmarks met
+- Security scan passed
+
+### Required Artifacts
+| Artifact | Owner | Format |
+|----------|-------|--------|
+| Test Report | Test Automation Agent | Coverage + results |
+| Performance Results | Performance Agent | Benchmark report |
+| Security Scan | Security Agent | Scan report |
+| Release Notes | Documentation Agent | Changelog |
+| QA Sign-off | QA Orchestrator | Approval |
+
+### Quality Gates
+- [ ] Zero critical/high severity bugs
+- [ ] Security scan passed
+- [ ] Performance within SLOs (p95 gen <90s, export >80%)
+- [ ] All acceptance criteria verified
+- [ ] Founder approval (for milestone releases)
+
+### Receiving Agent Actions (DevOps)
+1. Prepare deployment configuration
+2. Execute deployment to staging
+3. Run smoke tests
+4. If passing: Deploy to production
+5. Monitor post-deployment metrics
+
+### Rollback Conditions
+- Deployment failure
+- Post-deployment errors spike >5%
+- Performance degradation detected
+
+---
+
+## 5.5 Milestone-Based Handoffs (StoryForge Specific)
+
+### Alpha Milestone (End of Month 2)
+
+**Entry Criteria:**
+- Scene Builder v1 complete
+- 3 brains (Thriller, K-Drama, TikTok Native) trained
+- Character locking v1 with >85% consistency
+- MP4 16:9 export functional
+- Basic project CRUD operational
+
+**Exit Criteria (Handoff to Beta Phase):**
+- [ ] 100 alpha creators onboarded
+- [ ] Weekly feedback sessions running
+- [ ] >85% character consistency achieved
+- [ ] Time-to-first-lock <5 minutes
+- [ ] Founder approval for Beta phase
+
+---
+
+### Beta Milestone (End of Month 4)
+
+**Entry Criteria:**
+- Alpha feedback addressed
+- 8 brains available
+- 5 format templates implemented
+- Continuity v2 (location/time/props) functional
+- Export presets (TikTok, YouTube, Reels) working
+
+**Exit Criteria (Handoff to Launch Phase):**
+- [ ] >90% character consistency
+- [ ] p95 generation <90s
+- [ ] Export success >80%
+- [ ] Cache hit rate >30%
+- [ ] 1,000 beta users active
+- [ ] Billing foundations in place (not charging yet)
+- [ ] Founder approval for Launch phase
+
+---
+
+### Launch Milestone (End of Month 6)
+
+**Entry Criteria:**
+- Beta feedback addressed
+- Billing live (Creator/Pro/Studio tiers)
+- Marketplace v1 functional
+- Credit system operational
+- Mobile-responsive polish complete
+
+**Exit Criteria:**
+- [ ] $50K MRR achieved
+- [ ] 5,000 users registered
+- [ ] 400+ paying users
+- [ ] Uptime 99.5%
+- [ ] All launch checklist items green
+- [ ] Founder approval for public launch
+
+---
+
+# 6. Human Intervention Points
+
+## 6.1 Decisions Requiring Human Approval
+
+| Decision Type | Examples | Required Response Time |
+|---------------|----------|----------------------|
+| **Strategic Architecture** | New tech stack adoption, major refactoring, infrastructure provider changes | 48h |
+| **External Commitments** | New vendor contracts, API integrations with cost implications, partnerships | 72h |
+| **Resource Allocation** | GPU budget increases >$500/mo, new tool purchases >$100, infrastructure scaling >20% | 24h |
+| **Product Direction** | Feature prioritization changes, roadmap adjustments, scope changes >25% | 48h |
+| **Security/Compliance** | Data handling policy changes, security incidents, compliance decisions | Immediate-24h |
+| **User-Facing Changes** | Pricing changes, terms of service updates, major UX redesigns | 72h |
+| **Release Decisions** | Alpha/Beta/Launch milestone approvals | Per milestone schedule |
+
+## 6.2 Escalation Triggers
+
+| Trigger | Threshold | Notification Method |
+|---------|-----------|---------------------|
+| Agent Conflict | 2+ agents disagree on approach/priority | Immediate Slack/email |
+| Budget Threshold | Any spend >$500/month or >$100 one-time | Approval request |
+| Timeline Impact | Any blocker delaying milestone >3 days | Daily summary highlight |
+| Quality Failure | Quality gate failed 2+ consecutive times | Immediate notification |
+| Security Alert | Any medium+ severity vulnerability | Immediate notification |
+| Scope Creep | Feature scope expanded >25% from spec | Before continuing work |
+| User Impact | Any change affecting >1000 users | Pre-deployment approval |
+
+## 6.3 Review Cadence
+
+| Frequency | Review Type | Content | Founder Time Required |
+|-----------|-------------|---------|----------------------|
+| Daily | Async Summary | Sprint Coordinator generates progress report | 10 min (async read) |
+| Weekly | Sprint Review | Demo completed work, review metrics, adjust priorities | 1-2 hours |
+| Bi-weekly | Architecture Review | Review ADRs, tech debt assessment, performance metrics | 1 hour |
+| Monthly | Strategic Review | Roadmap progress, market analysis, budget review | 2-3 hours |
+| Milestone | Stage Gate | Full review before Alpha, Beta, Launch phases | Half day |
+
+## 6.4 Override Protocol
+
+The founder can override any agent decision at any time. To maintain system integrity:
+
+1. **Document Override:** Record the decision, rationale, and affected agents in the decision log
+2. **Notify Affected Agents:** Sprint Coordinator broadcasts override to all relevant agents
+3. **Update Artifacts:** Agents update their outputs to reflect the override within 4h
+4. **Learn & Improve:** If override reveals agent prompt deficiency, update agent prompt
+5. **Track Overrides:** Monthly review of override patterns to improve agent autonomy
+
+---
+
+# 7. Implementation Roadmap for Planning Phase
+
+## 7.1 Phase 1: Critical (Week 1)
+
+**Goal:** Establish core planning and coordination capabilities
+
+### Agents to Implement
+
+| Priority | Agent | Setup Effort | Dependencies |
+|----------|-------|--------------|--------------|
+| 1 | Sprint Coordinator Agent (NEW) | 4h | None |
+| 2 | Business Analyst Agent | 3h | Sprint Coordinator |
+| 3 | Architecture Agent | 3h | Sprint Coordinator |
+| 4 | Product Owner Agent | 2h | BA, Architecture |
+
+### Setup Sequence
+
+**Day 1-2: Sprint Coordinator**
+- [ ] Configure agent with StoryForge project context
+- [ ] Set up task tracking workflow
+- [ ] Define reporting templates
+- [ ] Test task routing logic
+
+**Day 2-3: Business Analyst**
+- [ ] Load PRD and user research documents
+- [ ] Configure user story templates
+- [ ] Set up integration with Product Owner
+- [ ] Generate initial user stories for MVP
+
+**Day 3-4: Architecture Agent**
+- [ ] Load Technical Architecture document
+- [ ] Configure with tech stack decisions
+- [ ] Set up ADR creation workflow
+- [ ] Review and validate existing architecture
+
+**Day 5: Integration & Testing**
+- [ ] Test Requirements → Architecture handoff
+- [ ] Validate task routing between agents
+- [ ] Run end-to-end planning workflow
+- [ ] Adjust prompts based on results
+
+### Success Metrics (Week 1)
+- [ ] User stories generated for all 12 epics
+- [ ] Technical architecture document reviewed and updated
+- [ ] Sprint 1 backlog populated with 15-20 tasks
+- [ ] Task routing accuracy >90%
+
+### Integration Checklist
+- [ ] All agents can communicate via defined channels
+- [ ] Handoff protocols tested with sample tasks
+- [ ] Escalation paths verified
+- [ ] Founder notification system working
+
+---
+
+## 7.2 Phase 2: High Priority (Week 2-3)
+
+**Goal:** Enable technical implementation preparation
+
+### Agents to Implement
+
+| Priority | Agent | Setup Effort | Dependencies |
+|----------|-------|--------------|--------------|
+| 1 | Design Agent | 3h | Architecture |
+| 2 | Data Engineering Agent (NEW) | 4h | Architecture |
+| 3 | DevOps Agent | 3h | Architecture |
+| 4 | Documentation Agent | 2h | All above |
+
+### Setup Sequence
+
+**Week 2, Day 1-2: Design Agent**
+- [ ] Load Product Blueprint UX specifications
+- [ ] Configure design system foundations
+- [ ] Set up component documentation workflow
+- [ ] Create initial wireframes for Scene Builder
+
+**Week 2, Day 2-3: Data Engineering Agent**
+- [ ] Configure with Dexie.js expertise
+- [ ] Load database schema requirements
+- [ ] Set up migration workflow
+- [ ] Design initial schema for projects, scenes, characters
+
+**Week 2, Day 4-5: DevOps Agent**
+- [ ] Configure CI/CD pipeline templates
+- [ ] Set up Vercel deployment workflow
+- [ ] Configure monitoring foundations
+- [ ] Create infrastructure-as-code templates
+
+**Week 3: Documentation Agent + Integration**
+- [ ] Set up documentation structure
+- [ ] Create ADR templates
+- [ ] Integrate with all technical agents
+- [ ] Generate initial technical documentation
+
+### Success Metrics (Week 2-3)
+- [ ] Design system foundations documented
+- [ ] Database schema designed and reviewed
+- [ ] CI/CD pipeline configured and tested
+- [ ] Technical documentation structure in place
+- [ ] All Phase 2 agents integrated with Sprint Coordinator
+
+---
+
+## 7.3 Phase 3: Medium Priority (Week 4+)
+
+**Goal:** Enable quality assurance and technical implementation
+
+### Agents to Implement
+
+| Priority | Agent | Setup Effort | Dependencies |
+|----------|-------|--------------|--------------|
+| 1 | QA Orchestrator Agent (NEW) | 4h | Test Automation |
+| 2 | Test Automation Agent | 3h | DevOps |
+| 3 | Code Review Agent | 2h | DevOps |
+| 4 | Security Agent | 2h | Code Review |
+| 5 | Performance Agent | 2h | Test Automation |
+
+### Success Metrics (Week 4+)
+- [ ] Quality gates defined for all phases
+- [ ] Test strategy documented
+- [ ] Code review checklists created
+- [ ] Security baseline established
+- [ ] Performance benchmarks defined
+
+---
+
+## 7.4 Phase 4: Future/Optional
+
+**Goal:** Enhanced capabilities for scaling
+
+### Agents to Consider
+
+| Agent | Purpose | When to Implement |
+|-------|---------|-------------------|
+| Marketing Agent | GTM and content strategy | Month 3+ |
+| API Integration Agent | Third-party integrations | When API work begins |
+| Debug Specialist | Production debugging | When users onboarded |
+| Analytics Agent | User analytics and A/B testing | Month 4+ |
+
+---
+
+# 8. Success Metrics & Monitoring
+
+## 8.1 Agent Performance KPIs
+
+| Agent | KPI | Target | Measurement |
+|-------|-----|--------|-------------|
+| Sprint Coordinator | Task routing accuracy | >90% | Correct agent assignment on first try |
+| Business Analyst | User story quality | >85% | Stories pass Architecture review without rework |
+| Architecture | Spec accuracy | >90% | Specs don't require major revision during dev |
+| Design | Design-to-code fidelity | >80% | Implementation matches design intent |
+| Data Engineering | Schema stability | <2 migrations/sprint | Schema changes after initial design |
+| Code Review | Review turnaround | <4h | Time from PR creation to review |
+| Test Automation | Coverage achievement | >80% | Actual vs target code coverage |
+| QA Orchestrator | Release quality | <2 post-release bugs | Critical bugs found post-deployment |
+| DevOps | Deployment success | >95% | Successful deployments / total attempts |
+| Documentation | Doc completeness | >90% | API endpoints with documentation |
+
+## 8.2 Quality Indicators
+
+### Code Quality
+- Code coverage: Target >80%
+- Linting errors: Target 0
+- Type safety: 100% TypeScript strict
+- Security vulnerabilities: 0 critical/high
+- Technical debt ratio: <15%
+
+### Documentation Completeness
+- API documentation: 100%
+- Component documentation: 100%
+- Architecture decision records: All major decisions
+- README accuracy: Verified weekly
+- Onboarding guide: Complete and tested
+
+### Test Coverage
+- Unit tests: >80%
+- Integration tests: All API endpoints
+- E2E tests: All critical user paths
+- Performance tests: All SLO-relevant endpoints
+- Security tests: OWASP Top 10 coverage
+
+## 8.3 Efficiency Metrics
+
+| Metric | Target | How to Measure |
+|--------|--------|----------------|
+| Time savings vs solo dev | 60% | Compare to estimated solo timeline |
+| Task completion rate | >85%/sprint | Completed / planned tasks |
+| Handoff smoothness | <10% rework | Tasks returned to upstream agent |
+| Blocker resolution time | <24h average | Time from block to resolution |
+| Agent utilization | >70% | Active time / available time |
+
+## 8.4 Cost Management
+
+### API Usage Tracking
+- Claude API calls: Track by agent, cap at budget
+- Third-party APIs: Monitor usage against quotas
+- Compute costs: Track GPU/server costs
+
+### Optimization Strategies
+1. **Caching:** Cache common agent responses
+2. **Batching:** Batch similar requests where possible
+3. **Prompt efficiency:** Optimize prompts for token usage
+4. **Selective activation:** Only activate agents when needed
+
+### Budget Thresholds
+| Category | Monthly Budget | Alert Threshold |
+|----------|---------------|-----------------|
+| Claude API | $500 | 80% ($400) |
+| Infrastructure | $200 | 80% ($160) |
+| Third-party tools | $100 | 80% ($80) |
+| Buffer | $200 | - |
+| **Total** | **$1,000** | **$640** |
+
+## 8.5 Continuous Improvement Process
+
+### Weekly Review
+1. Review agent performance metrics
+2. Identify underperforming agents
+3. Analyze failed handoffs and blockers
+4. Collect founder feedback on agent outputs
+
+### Monthly Optimization
+1. Update agent prompts based on performance data
+2. Refine handoff protocols based on failure patterns
+3. Adjust thresholds and targets as needed
+4. Add/remove agents based on workload
+
+### Quarterly Assessment
+1. Full agent ecosystem review
+2. Technology refresh evaluation
+3. Cost-benefit analysis
+4. Strategic alignment check
+
+---
+
+# Appendix A: Agent Prompt Templates
+
+## A.1 Sprint Coordinator Prompt Template
+
+```markdown
+# Sprint Coordinator Agent for StoryForge
+
+## Role
+You are the Sprint Coordinator for StoryForge, a generative film-creation platform. You manage the flow of work across all AI agents, ensuring tasks are assigned, dependencies tracked, and blockers resolved efficiently.
+
+## Context
+StoryForge is being developed by a solo founder using an agent-based team structure. Your role is critical in maintaining development velocity and quality.
+
+## Responsibilities
+1. Assign incoming tasks to appropriate agents based on the Task Categorization Schema
+2. Track task progress and update status daily
+3. Identify and resolve blockers autonomously when possible
+4. Facilitate handoffs between agents using defined protocols
+5. Generate daily async summaries for founder review
+6. Escalate when critical path is threatened
+
+## Task Routing Schema
+- FEAT (Features) → Architecture Agent → Design Agent → Dev Agents
+- BUG (Bugs) → Debug Specialist → Code Review Agent
+- PERF (Performance) → Performance Agent
+- SEC (Security) → Security Agent
+- DOCS (Documentation) → Documentation Agent
+- TEST (Testing) → Test Automation Agent
+- INFRA (Infrastructure) → DevOps Agent
+- INTEG (Integration) → API Integration Agent
+- DATA (Database) → Data Engineering Agent
+- UX (Design) → Design Agent
+
+## Escalation Criteria
+Escalate to founder when:
+1. Critical path blocked >24 hours
+2. Scope creep detected >25% from original spec
+3. Resource conflicts cannot be resolved between agents
+4. Timeline slips >3 days on milestones
+5. Budget threshold exceeded
+
+## Output Format
+Daily summaries should include:
+- Tasks completed (with links)
+- Tasks in progress (with blockers if any)
+- Tasks blocked (with escalation status)
+- Upcoming handoffs
+- Metrics snapshot
+
+## Reference Documents
+- StoryForge_Sprint_Plan.md
+- StoryForge_RACI.md
+- StoryForge_6Month_Execution_Plan.md
+```
+
+## A.2 Data Engineering Agent Prompt Template
+
+```markdown
+# Data Engineering Agent for StoryForge
+
+## Role
+You are the Data Engineering Agent for StoryForge. You design and implement the local-first data architecture using Dexie.js for IndexedDB, sync protocols for offline-first functionality, and vector storage for AI model continuity.
+
+## Technical Context
+- **Primary Database:** Dexie.js (IndexedDB wrapper) for local-first PWA
+- **Server Database:** PostgreSQL with pgvector extension
+- **Vector Storage:** Character embeddings (512-dim), style vectors (128-dim)
+- **Caching:** Redis (L1) + Vector similarity (L2)
+- **Sync Protocol:** Conflict-free sync between local and server
+
+## Key Responsibilities
+1. Design schemas that support offline-first with seamless sync
+2. Implement efficient caching strategies (L1 Redis, L2 vector DB)
+3. Ensure data integrity across sync boundaries
+4. Optimize for mobile PWA performance constraints
+5. Design migration strategies for schema evolution
+
+## Data Models (from Technical Architecture)
+- Projects: id, user_id, title, type, brain_id, format_id, settings, status
+- Scenes: id, project_id, sequence_number, prompt, enhanced_prompt, parameters, status, video_url
+- Characters: id, project_id, name, face_embedding (VECTOR 512), appearance_descriptor, reference_images
+- Scene Versions: id, scene_id, version_number, prompt, parameters, video_url
+
+## Quality Standards
+- All schemas must be reversible (migrations)
+- Sync conflicts must be handled gracefully
+- Query performance: <50ms for common operations
+- Storage efficiency: Minimize IndexedDB footprint
+
+## Escalation Criteria
+Escalate to founder when:
+1. Schema changes affect >3 services
+2. Sync conflicts require policy decisions
+3. Storage costs exceed budget thresholds
+4. Performance targets cannot be met with current architecture
+
+## Collaboration
+- Architecture Agent: Schema design reviews
+- Performance Agent: Query optimization
+- Security Agent: Data encryption and access control
+- API Integration Agent: Sync protocol implementation
+```
+
+---
+
+# Appendix B: Handoff Checklists
+
+## B.1 Requirements → Architecture Checklist
+
+- [ ] All user stories have acceptance criteria (Given/When/Then)
+- [ ] Non-functional requirements documented (performance, security, scalability)
+- [ ] Dependencies between stories identified
+- [ ] Edge cases and error scenarios documented
+- [ ] Success metrics defined for each story
+- [ ] Product Owner has approved priority and scope
+- [ ] Business Analyst has no open questions
+- [ ] Estimated complexity assigned (S/M/L/XL)
+
+## B.2 Architecture → Development Checklist
+
+- [ ] Technical specification document complete
+- [ ] API contracts defined (OpenAPI/GraphQL schema)
+- [ ] Database schema changes documented with migrations
+- [ ] Component architecture diagram created
+- [ ] Security considerations documented
+- [ ] Performance requirements specified
+- [ ] Design Agent has reviewed UX implications
+- [ ] Data Engineering Agent has validated schema
+- [ ] Test strategy outlined
+
+## B.3 Development → Testing Checklist
+
+- [ ] Code complete for all acceptance criteria
+- [ ] Unit tests written with >80% coverage
+- [ ] Code Review Agent has approved PR
+- [ ] Documentation updated
+- [ ] Linting passes (0 errors)
+- [ ] Type checking passes (TypeScript strict)
+- [ ] No critical security findings
+- [ ] Performance impact assessed
+
+## B.4 Testing → Deployment Checklist
+
+- [ ] All unit tests passing
+- [ ] Integration tests passing
+- [ ] E2E tests passing for affected flows
+- [ ] Performance benchmarks met
+- [ ] Security scan passed
+- [ ] QA Orchestrator sign-off obtained
+- [ ] Release notes prepared
+- [ ] Rollback plan documented
+- [ ] Founder approval (for milestone releases)
+
+---
+
+# Appendix C: Decision Log Template
+
+| Date | Decision | Rationale | Agents Affected | Founder Approved | Outcome |
+|------|----------|-----------|-----------------|------------------|---------|
+| YYYY-MM-DD | Description of decision | Why this decision was made | List of agents | Yes/No/Pending | Result after implementation |
+
+---
+
+# Document Control
+
+| Version | Date | Author | Changes |
+|---------|------|--------|---------|
+| 1.0 | December 2024 | Claude Agent | Initial document |
+
+**Classification:** CONFIDENTIAL
+**Last Updated:** December 2024
+**Contact:** founders@storyforge.ai
