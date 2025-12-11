@@ -1,0 +1,73 @@
+# Dependencies
+node_modules/
+package-lock.json
+bun.lockb
+
+# Build outputs
+dist/
+build/
+*.log
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+~$*
+*.bak
+
+# OS files
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Cache
+.cache/
+.parcel-cache/
+
+# Backend temp files
+backend/temp/
+backend/temp/*
+
+# Claude/AI config files
+.claude/
+.claude.json
+.claude.json.backup
+.claude.json.corrupted.*
+
+# Personal config (if any)
+.ssh/
+.gitconfig
+
+# Archives
+*.zip
+files.zip
+
+# Office temp files
+~$*.docx
+~$*.pptx
+~$*.xlsx
+
